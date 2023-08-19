@@ -1,23 +1,21 @@
+using PaymentContext.Domain.ValueObjects;
 namespace PaymentContext.Domain.Entities
 {
     public class Student
     {
         private IList<Subscription> _subscription;
-        public Student(string firsName, string lastName, string document, string email)
+        public Student(Name name, Document document, Email email)
         {
-            FirsName = firsName;
-            LastName = lastName;
+            Name = name;
             Document = document;
             Email = email;
-
             _subscription = new List<Subscription>();
         }
 
-        public string FirsName { get; private set; }
-        public string LastName { get; private set; }
-        public string Document { get; private set; }
-        public string Email { get; private set; }
-        public string Address { get; private set; }
+        public Name Name { get; private set; }
+        public Document Document { get; private set; }
+        public Email Email { get; private set; }
+        public Address Address { get; private set; }
         public IReadOnlyCollection<Subscription> Subscriptions { get { return _subscription.ToArray(); } }
 
         public void AddSubscription(Subscription subscription)
